@@ -1,10 +1,13 @@
 # History of Use
 
+We seriously love this handling of scientific units of measure for C++; we are very grateful to [the original sourceforge developers](https://sourceforge.net/projects/tuoml/) of this code. 🤩
+
 We started using this code around 2014, initially forking it as in internal repo.
 (At the time, we could not directly pull open source repos into our build systems; repos needed to be internal.)
 It became heavily used and relied upon.
-We seriously love this handling of scientific units of measure for C++.
-In 2015, a project using it was brought to open-source as the [FIM MOPS Aircraft and Control Model](htps://github.com/mitre/fmacm) and the C++ Units of Measure library was included as an embedded library.
+In 2015, a project using it was brought to open-source as the [FIM MOPS Aircraft and Control Model](htps://github.com/mitre/fmacm) and the C++ Units of Measure library was included as an embedded library dependency.
+At that point, that C++ UoM code was quietly back in the open-source.
+And it was also unmodified relative to the original fork.
 That code base is licensed using Apache 2.0.
 
 Over time, it became clear that this C++ Units of Measure code base really needed to be independently managed, having its own git repo.

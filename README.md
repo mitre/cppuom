@@ -5,12 +5,10 @@
 ![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
-![Rocky Linux](https://img.shields.io/badge/-Rocky%20Linux-%2310B981?style=for-the-badge&logo=rockylinux&logoColor=white)
-![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+![Linux](https://img.shields.io/badge/-Rocky%20Linux-%2310B981?style=for-the-badge&logo=rockylinux&logoColor=white)
 
-C++ header-only library for scientific units of measure compile-time enforcement. This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.
-
-🚧 Coming soon...as part of an effort to break apart the [MOPS Aircraft and Control Model](https://github.com/mitre/fmacm) into cleaner, independent modules.
+C++ header-only library for scientific units of measure compile-time enforcement.
+This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.
 
 ## History of Use
 
@@ -29,6 +27,29 @@ This project contains content developed by The MITRE Corporation. If this code i
 ## License
 
 [Apache 2.0](https://github.com/mitre/FMACM/blob/master/LICENSE)
+
+## Build
+
+This is a header-only library. You can include it without building it.
+
+We like the [C++ Package Manager (CPM)](https://github.com/cpm-cmake/cpm.cmake) for including external git repos. We do it like this:
+
+```cmake
+include(${PROJECT_SOURCE_DIR}/.cmake/get_cpm.cmake)
+CPMAddPackage(
+    NAME unitslib
+    GIT_REPOSITORY https://github.com/mitre/cppuom.git
+    GIT_TAG 2.1
+    DOWNLOAD_ONLY TRUE
+)
+target_include_directories(some_target PRIVATE include)
+```
+
+If useful, the CMake also exposes to the PARENT scope the variable `CPPUOM_SOURCES`.
+
+## Use
+
+Review the [example code](./example.cpp) or the [tests](./test/tests.cpp).
 
 ---
 
