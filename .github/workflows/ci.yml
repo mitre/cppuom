@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir -p coverage
           gcovr --root . \
-            --object-directory build \
+            --object-directory build/CMakeFiles/cppuom-tests.dir \
             --filter 'include/' \
             --print-summary \
             --txt coverage/coverage.txt \
