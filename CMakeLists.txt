@@ -45,10 +45,14 @@ set(SOURCE_FILES
    units-2.1/system/units_config.h
 )
 
-# TODO write to bin directory
-# TODO add option to build this, disabled by default
-add_executable(cppuom-example example.cpp)
-target_include_directories(cppuom-example PRIVATE units-2.1)
+# TODO this creates a warning when built locally...need to fix
+set(CPPUOM_SOURCES ${SOURCE_FILES} PARENT_SCOPE)
+
+if (BUILD_EXAMPLE)
+   add_executable(cppuom-example example.cpp)
+   target_include_directories(cppuom-example PRIVATE units-2.1)
+   set_target_properties(cppuom-example PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+endif()
 
 include(CTest)
 
