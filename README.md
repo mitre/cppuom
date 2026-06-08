@@ -48,6 +48,23 @@ CPMAddPackage(
 
 ## Use
 
+```cpp
+using namespace Units;
+
+// Abstract declarations
+Length threeFeet = FeetLength(3);
+Length threeMeters = MetersLength(3);
+
+// Mathematical operations can be of disparate types
+Area rectArea = threeFeet*threeMeters;
+MetersLength distance = sqrt(rectArea);
+std::cout << "dist = " << distance << std::endl;
+
+if (threeFeet < threeMeters)
+  std::cout << "threeFeet is less than threeMeters" << std::endl;
+```
+
+
 ---
 
 ~ Happy Developing ~
