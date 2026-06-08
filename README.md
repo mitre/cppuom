@@ -40,7 +40,7 @@ include(${PROJECT_SOURCE_DIR}/.cmake/get_cpm.cmake)
 CPMAddPackage(
     NAME unitslib
     GIT_REPOSITORY https://github.com/mitre/cppuom.git
-    GIT_TAG 2.1
+    GIT_TAG 2.2
     DOWNLOAD_ONLY TRUE
 )
 target_include_directories(some_target PRIVATE include)
