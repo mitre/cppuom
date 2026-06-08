@@ -8,9 +8,8 @@
 ![Rocky Linux](https://img.shields.io/badge/-Rocky%20Linux-%2310B981?style=for-the-badge&logo=rockylinux&logoColor=white)
 ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 
-C++ header-only library for scientific units of measure compile-time enforcement. This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.
-
-🚧 Coming soon...as part of an effort to break apart the [MOPS Aircraft and Control Model](https://github.com/mitre/fmacm) into cleaner, independent modules.
+C++ header-only library for scientific units of measure compile-time enforcement.
+This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.
 
 ## History of Use
 
@@ -44,26 +43,14 @@ CPMAddPackage(
     GIT_TAG 2.1
     DOWNLOAD_ONLY TRUE
 )
+target_include_directories(some_target PRIVATE include)
 ```
+
+If useful, the CMake also exposes to the PARENT scope the variable `CPPUOM_SOURCES`.
 
 ## Use
 
-```cpp
-using namespace Units;
-
-// Abstract declarations
-Length threeFeet = FeetLength(3);
-Length threeMeters = MetersLength(3);
-
-// Mathematical operations can be of disparate types
-Area rectArea = threeFeet*threeMeters;
-MetersLength distance = sqrt(rectArea);
-std::cout << "dist = " << distance << std::endl;
-
-if (threeFeet < threeMeters)
-  std::cout << "threeFeet is less than threeMeters" << std::endl;
-```
-
+Review the [example code](./example.cpp) or the [tests](./test/tests.cpp).
 
 ---
 
