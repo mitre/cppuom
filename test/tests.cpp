@@ -142,3 +142,25 @@ TEST(AbsoluteTemperatureUnits, ConvertsBetweenSupportedScales)
   ExpectAbsoluteConversion<Units::AbsFahrenheitTemperature>(
       Units::AbsRankineTemperature(459.67), 0.0);
 }
+
+TEST(AbsoluteTemperatureUnits, AddsRelativeTemperatureInPlace)
+{
+  Units::AbsTemperature temperature(Units::AbsCelsiusTemperature(10.0));
+
+  Units::AbsTemperature & result = temperature += Units::FahrenheitTemperature(18.0);
+
+  EXPECT_EQ(&result, &temperature);
+  EXPECT_NEAR(Units::AbsCelsiusTemperature(temperature).value(), 20.0,
+              kTolerance);
+}
+
+TEST(AbsoluteTemperatureUnits, SubtractsRelativeTemperatureInPlace)
+{
+  Units::AbsTemperature temperature(Units::AbsCelsiusTemperature(10.0));
+
+  Units::AbsTemperature & result = temperature -= Units::FahrenheitTemperature(18.0);
+
+  EXPECT_EQ(&result, &temperature);
+  EXPECT_NEAR(Units::AbsCelsiusTemperature(temperature).value(), 0.0,
+              kTolerance);
+}

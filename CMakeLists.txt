@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 4.0)
-project(cppuom)
+cmake_minimum_required(VERSION 3.15)
+project(cppuom VERSION 2.2 LANGUAGES CXX)
 
-set(SOURCE_FILES
+option(BUILD_EXAMPLE "Build the cppuom example executable" OFF)
+
+set(CPPUOM_HEADERS
    include/scalar/Acceleration.h
    include/scalar/Angle.h
    include/scalar/Angle.i
@@ -45,14 +47,19 @@ set(SOURCE_FILES
    include/system/units_config.h
 )
 
-if (NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-   set(CPPUOM_SOURCES ${SOURCE_FILES} PARENT_SCOPE)
-endif()
+add_library(cppuom INTERFACE)
+add_library(mitre::cppuom ALIAS cppuom)
+
+target_sources(cppuom INTERFACE ${CPPUOM_HEADERS})
+target_include_directories(cppuom INTERFACE
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+   $<INSTALL_INTERFACE:include>
+)
 
 if (BUILD_EXAMPLE)
    add_executable(cppuom-example example.cpp)
-   target_include_directories(cppuom-example PRIVATE include)
-   set_target_properties(cppuom-example PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+   target_link_libraries(cppuom-example PRIVATE mitre::cppuom)
+   set_target_properties(cppuom-example PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 endif()
 
 include(CTest)
@@ -67,13 +74,12 @@ if(BUILD_TESTING)
       OPTIONS
       "INSTALL_GTEST OFF"
       "GTEST_FORCE_SHARED_CRT ON"
-      "BUILD_GMOCK ON"
+      "BUILD_GMOCK OFF"
    )
 
    add_executable(cppuom-tests test/tests.cpp)
-   target_include_directories(cppuom-tests PRIVATE include)
-   target_link_libraries(cppuom-tests PRIVATE GTest::gtest_main)
-   set_target_properties(cppuom-tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+   target_link_libraries(cppuom-tests PRIVATE mitre::cppuom GTest::gtest_main)
+   set_target_properties(cppuom-tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
    include(GoogleTest)
    gtest_discover_tests(cppuom-tests)

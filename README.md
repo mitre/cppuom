@@ -5,7 +5,8 @@
 ![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
-![Linux](https://img.shields.io/badge/-Rocky%20Linux-%2310B981?style=for-the-badge&logo=rockylinux&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-%2310B981?style=for-the-badge&logo=linux&logoColor=white)
+![macos](https://img.shields.io/badge/MacOS-f0f0f0?logo=apple&logoColor=black&style=for-the-badge)
 
 C++ header-only library for scientific units of measure compile-time enforcement.
 This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.
@@ -35,17 +36,14 @@ This is a header-only library. You can include it without building it.
 We like the [C++ Package Manager (CPM)](https://github.com/cpm-cmake/cpm.cmake) for including external git repos. We do it like this:
 
 ```cmake
-include(${PROJECT_SOURCE_DIR}/.cmake/get_cpm.cmake)
+include(${PROJECT_SOURCE_DIR}/.cpm/get_cpm.cmake)
 CPMAddPackage(
-    NAME unitslib
+    NAME cppuom
     GIT_REPOSITORY https://github.com/mitre/cppuom.git
-    GIT_TAG 2.1
-    DOWNLOAD_ONLY TRUE
+    GIT_TAG 2.2
 )
-target_include_directories(some_target PRIVATE include)
+target_link_libraries(some_target PRIVATE mitre::cppuom)
 ```
-
-If useful, the CMake also exposes to the PARENT scope the variable `CPPUOM_SOURCES`.
 
 ## Use
 
