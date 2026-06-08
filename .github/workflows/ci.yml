@@ -23,8 +23,10 @@ jobs:
       - name: Install CMake 4
         shell: bash
         run: |
-          python3 -m pip install --user "cmake>=4.0,<5"
-          echo "$(python3 -m site --user-base)/bin" >> "$GITHUB_PATH"
+          python3 -m venv "$RUNNER_TEMP/cmake-venv"
+          "$RUNNER_TEMP/cmake-venv/bin/python" -m pip install --upgrade pip
+          "$RUNNER_TEMP/cmake-venv/bin/python" -m pip install "cmake>=4.0,<5"
+          echo "$RUNNER_TEMP/cmake-venv/bin" >> "$GITHUB_PATH"
 
       - name: Configure
         run: cmake -S . -B build -DBUILD_EXAMPLE=ON -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release
