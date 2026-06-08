@@ -4,5 +4,8 @@ C++ header-only library for scientific units of measure compile-time enforcement
 
 When we forked this repo to begin public maintenance, we upgraded the license from LGPLv2 to v2.1.
 
+🚧 Coming soon...as part of an effort to break apart the [MOPS Aircraft and Control Model](https://github.com/mitre/fmacm) into cleaner, independent modules.
 
-Contributions to this repo will begin in Fall 2025.
+---
+
+~ Happy Developing ~
