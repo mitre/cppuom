@@ -5,7 +5,8 @@
 ![CMake](https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white)
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
-![Linux](https://img.shields.io/badge/-Rocky%20Linux-%2310B981?style=for-the-badge&logo=rockylinux&logoColor=white)
+![Linux](https://img.shields.io/badge/-Linux-%2310B981?style=for-the-badge&logo=linux&logoColor=white)
+![macos](https://img.shields.io/badge/MacOS-f0f0f0?logo=apple&logoColor=black&style=for-the-badge)
 
 C++ header-only library for scientific units of measure compile-time enforcement.
 This repo is a fork of [this abandoned repo](https://sourceforge.net/projects/tuoml/) on sourceforge.

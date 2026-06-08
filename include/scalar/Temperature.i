@@ -125,7 +125,7 @@ inline
 AbsTemperature_<ValueType_> &
 AbsTemperature_<ValueType_>::operator+=(Temperature const & temperature)
 {
-  _value += temperature._value;
+  _value += CelsiusTemperature(temperature).value();
   return *this;
 }
 
@@ -134,7 +134,7 @@ inline
 AbsTemperature_<ValueType_> &
 AbsTemperature_<ValueType_>::operator-=(Temperature const & temperature)
 {
-  _value -= temperature._value;
+  _value -= CelsiusTemperature(temperature).value();
   return *this;
 }
 
