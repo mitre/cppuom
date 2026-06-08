@@ -61,8 +61,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p coverage
-          gcovr --root . \
-            --object-directory build/CMakeFiles/cppuom-tests.dir \
+          gcovr build/CMakeFiles/cppuom-tests.dir \
+            --root . \
             --filter 'include/' \
             --print-summary \
             --txt coverage/coverage.txt \
