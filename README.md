@@ -30,6 +30,24 @@ This project contains content developed by The MITRE Corporation. If this code i
 
 [Apache 2.0](https://github.com/mitre/FMACM/blob/master/LICENSE)
 
+## Build
+
+This is a header-only library. You can include it without building it.
+
+We like the [C++ Package Manager (CPM)](https://github.com/cpm-cmake/cpm.cmake) for including external git repos. We do it like this:
+
+```cmake
+include(${PROJECT_SOURCE_DIR}/.cmake/get_cpm.cmake)
+CPMAddPackage(
+    NAME unitslib
+    GIT_REPOSITORY https://github.com/mitre/cppuom.git
+    GIT_TAG 2.1
+    DOWNLOAD_ONLY TRUE
+)
+```
+
+## Use
+
 ---
 
 ~ Happy Developing ~
