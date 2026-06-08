@@ -36,17 +36,14 @@ This is a header-only library. You can include it without building it.
 We like the [C++ Package Manager (CPM)](https://github.com/cpm-cmake/cpm.cmake) for including external git repos. We do it like this:
 
 ```cmake
-include(${PROJECT_SOURCE_DIR}/.cmake/get_cpm.cmake)
+include(${PROJECT_SOURCE_DIR}/.cpm/get_cpm.cmake)
 CPMAddPackage(
-    NAME unitslib
+    NAME cppuom
     GIT_REPOSITORY https://github.com/mitre/cppuom.git
     GIT_TAG 2.2
-    DOWNLOAD_ONLY TRUE
 )
-target_include_directories(some_target PRIVATE include)
+target_link_libraries(some_target PRIVATE mitre::cppuom)
 ```
-
-If useful, the CMake also exposes to the PARENT scope the variable `CPPUOM_SOURCES`.
 
 ## Use
 

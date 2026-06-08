@@ -54,7 +54,7 @@ jobs:
         run: cmake --build build --parallel
 
       - name: Run test binary
-        run: ./bin/cppuom-tests
+        run: ./build/bin/cppuom-tests
 
       - name: Generate coverage report
         if: matrix.coverage
@@ -85,4 +85,4 @@ jobs:
           if-no-files-found: error
 
       - name: Run example
-        run: ./bin/cppuom-example
+        run: ./build/bin/cppuom-example
