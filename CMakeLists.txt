@@ -45,8 +45,9 @@ set(SOURCE_FILES
    units-2.1/system/units_config.h
 )
 
-# TODO this creates a warning when built locally...need to fix
-set(CPPUOM_SOURCES ${SOURCE_FILES} PARENT_SCOPE)
+if (NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+   set(CPPUOM_SOURCES ${SOURCE_FILES} PARENT_SCOPE)
+endif()
 
 if (BUILD_EXAMPLE)
    add_executable(cppuom-example example.cpp)
@@ -72,6 +73,7 @@ if(BUILD_TESTING)
    add_executable(cppuom-tests test/tests.cpp)
    target_include_directories(cppuom-tests PRIVATE units-2.1)
    target_link_libraries(cppuom-tests PRIVATE GTest::gtest_main)
+   set_target_properties(cppuom-tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
    include(GoogleTest)
    gtest_discover_tests(cppuom-tests)
